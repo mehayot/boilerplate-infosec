@@ -3,7 +3,7 @@ const app = express();
 
 app.use(helmet.hidePoweredBy());
 app.use(helmet.frameguard({action: 'deny'}));
-app.use(helmet.xssFilter(node: 'block'))
+app.use(helmet.xssFilter())
 
 
 
