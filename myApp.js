@@ -8,14 +8,8 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(helmet.ieNoOpen());
 
-var  ninetyDaysInSeconds = 90 * 24 * 60 * 60;
-app.use(
-  helmet.hsts({
-    maxAge: 7776000, // 90 kun sekundda (90*24*60*60)
-    includeSubDomains: true, // ixtiyoriy
-    preload: true, // ixtiyoriy
-  })
-);
+var timeinSeconds = 90*24*60*60;
+app.use(helmet.hsts( {maxAge: timeinSeconds, force: true} ));
 
 
 
