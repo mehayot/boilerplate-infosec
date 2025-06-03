@@ -8,9 +8,8 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(helmet.ieNoOpen());
 
-var timeinSeconds = 90*24*60*60;
-app.use(helmet.hsts( {maxAge: timeinSeconds, force: true} ));
-
+var ninetyDaysInSeconds = 90*24*60*60;
+app.use(helmet.hsts( {maxAge: ninetyDaysInSeconds, force: true} ));
 
 
 
@@ -60,7 +59,6 @@ app.use(helmet.hsts( {maxAge: timeinSeconds, force: true} ));
 
 const api = require('./server.js');
 app.use(express.static('public'));
-app.disable('strict-transport-security');
 app.use('/_api', api);
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
